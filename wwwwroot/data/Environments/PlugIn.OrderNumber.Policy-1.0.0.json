@@ -1,0 +1,6 @@
+{
+  "$type": "BKL.Commerce.Plugin.OrderNumber.Policies.OrderNumberPolicy, BKL.Commerce.Plugin.OrderNumber",
+  "StartNumber": 1,
+  "OrderNumberLength": 1,
+  "PaddingCharacter": "0"
+}
