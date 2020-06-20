@@ -6,6 +6,6 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Entities
     {
         public const string OrderNumberEntityId = "Achievecreative.Commerce.Plugin.OrderNumberEntity";
 
-        public uint LastOrderNumber { get; set; }
+        public int LastOrderNumber { get; set; }
     }
 }

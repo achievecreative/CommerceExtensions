@@ -11,5 +11,9 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Arguments
         public string CountryCode { get; set; }
 
         public string Separator { get; set; }
+
+        public char PaddingCharacter { get; set; }
+
+        public int OrderNumberLength { get; set; }
     }
 }

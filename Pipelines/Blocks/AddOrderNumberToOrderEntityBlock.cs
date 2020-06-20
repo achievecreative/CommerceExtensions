@@ -24,7 +24,9 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             var pipelineArgs = new NewOrderNumberArgument()
             {
                 Prefix = orderNumberPolicy?.Prefix,
-                Separator = "-"
+                Separator = "-",
+                OrderNumberLength = orderNumberPolicy?.OrderNumberLength ?? 6,
+                PaddingCharacter = orderNumberPolicy?.PaddingCharacter??'0',
             };
 
             var fulfillmentComponent = arg.GetComponent<FulfillmentComponent>();

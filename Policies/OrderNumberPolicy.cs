@@ -6,9 +6,9 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Policies
     {
         public string Prefix { get; set; }
 
-        public uint StartNumber { get; set; }
+        public int StartNumber { get; set; }
 
-        public uint OrderNumberLength { get; set; }
+        public int OrderNumberLength { get; set; }
 
         public char PaddingCharacter { get; set; }
     }

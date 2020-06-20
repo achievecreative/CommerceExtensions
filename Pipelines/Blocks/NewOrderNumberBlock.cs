@@ -21,11 +21,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
         {
             var orderNumberEntity = await _generateNewOrderNumberPipeline.Run(new GenerateOrderNumberArgument(), context);
 
-            var orderNumberPolicy = context.GetPolicy<OrderNumberPolicy>();
-
-            Condition.Requires(orderNumberPolicy, "OrderNumberPolicy is missing");
-
-            var orderNumber = orderNumberEntity.LastOrderNumber.ToString().PadLeft((int)orderNumberPolicy.OrderNumberLength, orderNumberPolicy.PaddingCharacter);
+            var orderNumber = orderNumberEntity.LastOrderNumber.ToString().PadLeft(arg.OrderNumberLength, arg.PaddingCharacter);
 
             var buffer = new string[7];
 
