@@ -5,7 +5,7 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines
 {
-    [PipelineDisplayName("BKL.Commerce.GenerateOrderNumberPipeline")]
+    [PipelineDisplayName("Achievecreative.Commerce.GenerateOrderNumberPipeline")]
     public interface IGenerateNewOrderNumberPipeline : IPipeline<GenerateOrderNumberArgument, OrderNumberEntity, CommercePipelineExecutionContext>
     {
 

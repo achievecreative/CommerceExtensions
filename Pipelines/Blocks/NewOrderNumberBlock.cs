@@ -8,7 +8,7 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
-    [PipelineDisplayName("BKLCommerce.GetNewOrderBlock")]
+    [PipelineDisplayName("Achievecreative.CommerceGetNewOrderBlock")]
     public class NewOrderNumberBlock : PipelineBlock<NewOrderNumberArgument, string, CommercePipelineExecutionContext>
     {
         private readonly IGenerateNewOrderNumberPipeline _generateNewOrderNumberPipeline;

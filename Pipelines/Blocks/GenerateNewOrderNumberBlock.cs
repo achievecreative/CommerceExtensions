@@ -10,7 +10,7 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
-    [PipelineDisplayName("BKLCommerce.GenerateNewOrderNumberBlock")]
+    [PipelineDisplayName("Achievecreative.CommerceGenerateNewOrderNumberBlock")]
     public class GenerateNewOrderNumberBlock : PipelineBlock<GenerateOrderNumberArgument, OrderNumberEntity, CommercePipelineExecutionContext>
     {
         private static readonly ConcurrentDictionary<string, object> LockTable = new ConcurrentDictionary<string, object>();
