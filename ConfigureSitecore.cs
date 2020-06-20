@@ -5,6 +5,7 @@ using Achievecreative.Commerce.Plugin.OrderNumber.Pipelines;
 using Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Commerce.Core;
+using Sitecore.Commerce.EntityViews;
 using Sitecore.Commerce.Plugin.Orders;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
@@ -39,7 +40,11 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
                     })
                     .ConfigurePipeline<ICreateOrderPipeline>(configure =>
                     {
-                        configure.Add<AddOrderNumberToOrderEntityBlock>().Before<IPersistEntityPipeline>();
+                        configure.Add<AddOrderNumberToOrderEntityBlock>().After<IncrementOrderPerformanceCountersBlock>();
+                    })
+                    .ConfigurePipeline<IGetEntityViewPipeline>(configure =>
+                    {
+                        configure.Add<GetOrderNumberEntityViewBlock>().After<GetOrderSummaryEntityViewBlock>();
                     })
                     .ConfigurePipeline<IConfigureServiceApiPipeline>(configure =>
                     {

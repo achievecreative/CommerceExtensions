@@ -39,7 +39,8 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 
             var orderNumberComponent = new OrderNumberComponent()
             {
-                OrderNumber = orderNumber
+                OrderNumber = orderNumber,
+                Name = "OrderNumber"
             };
 
             arg.AddComponents(orderNumberComponent);
