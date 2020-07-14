@@ -18,7 +18,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
     ///         Sitecore.Commerce.Core.CommercePipelineExecutionContext}
     ///     </cref>
     /// </seealso>
-    [PipelineDisplayName("AchievecreativePluginConfigureServiceApiBlock")]
+    [PipelineDisplayName("OrderNumberPluginConfigureServiceApiBlock")]
     public class ConfigureServiceApiBlock : PipelineBlock<ODataConventionModelBuilder, ODataConventionModelBuilder, CommercePipelineExecutionContext>
     {
         /// <summary>
