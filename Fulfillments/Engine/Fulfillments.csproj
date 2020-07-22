@@ -48,5 +48,6 @@
     <Folder Include="Entities\" />
     <Folder Include="Models\" />
     <Folder Include="Pipelines\Arguments\" />
+    <Folder Include="Pipelines\Blocks\Models\" />
   </ItemGroup>
 </Project>
