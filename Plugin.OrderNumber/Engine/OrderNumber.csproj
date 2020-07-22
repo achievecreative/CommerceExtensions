@@ -20,6 +20,7 @@
       <Version>5.0.42</Version>
     </PackageReference>
     <PackageReference Include="Sitecore.Commerce.Plugin.Fulfillment" Version="5.0.20" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Management" Version="5.0.19" />
     <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="5.0.20" />
     <PackageReference Include="Sitecore.Commerce.Plugin.SQL" Version="5.0.22" />
   </ItemGroup>

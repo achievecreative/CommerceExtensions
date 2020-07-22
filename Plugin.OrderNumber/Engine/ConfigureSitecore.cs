@@ -6,7 +6,10 @@ using Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Commerce.Core;
 using Sitecore.Commerce.EntityViews;
+using Sitecore.Commerce.Plugin.Fulfillment;
+using Sitecore.Commerce.Plugin.Management;
 using Sitecore.Commerce.Plugin.Orders;
+using Sitecore.Commerce.Plugin.Search;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
 
@@ -45,6 +48,15 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
                     .ConfigurePipeline<IGetEntityViewPipeline>(configure =>
                     {
                         configure.Add<GetOrderNumberEntityViewBlock>().After<GetOrderSummaryEntityViewBlock>();
+                        configure.Add<AddOrderNumberToOrderListViewBlock>().After<GetOrdersListViewBlock>();
+                    })
+                    .ConfigurePipeline<IIncrementalIndexMinionPipeline>(configure =>
+                    {
+                        configure.Add<AddOrderNumberToIndexDocumentViewBlock>().After<InitializeOrdersIndexingViewBlock>();
+                    })
+                    .ConfigurePipeline<IFullIndexMinionPipeline>(configure =>
+                    {
+                        configure.Add<AddOrderNumberToIndexDocumentViewBlock>().After<InitializeOrdersIndexingViewBlock>();
                     })
                     .ConfigurePipeline<IConfigureServiceApiPipeline>(configure =>
                     {
