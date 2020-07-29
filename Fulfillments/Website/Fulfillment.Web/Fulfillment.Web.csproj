@@ -904,6 +904,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="Pipelines\FilterShippingMethods.cs" />
     <Compile Include="Pipelines\GetAvailableCountries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -916,7 +917,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ServiceProxy\Sitecore.Commerce.ServiceProxy\Sitecore.Commerce.ServiceProxy.csproj">
+      <Project>{1cab0f30-b24b-44e9-a127-e1629abedb6c}</Project>
+      <Name>Sitecore.Commerce.ServiceProxy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

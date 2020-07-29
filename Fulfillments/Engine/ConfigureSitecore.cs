@@ -29,11 +29,15 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments
             services.RegisterAllPipelineBlocks(assembly);
             services.RegisterAllCommands(assembly);
 
-            services.Sitecore().Pipelines(config =>
-                config.ConfigurePipeline<IValidatePartyPipeline>(configure =>
-                        {
-                            configure.Replace<ValidatePartyBlock, ValidationPartyBlock>();
-                        })
+            services.Sitecore().Pipelines(config => 
+                    config.ConfigurePipeline<IValidatePartyPipeline>(configure =>
+                    {
+                        configure.Replace<ValidatePartyBlock, ValidationPartyBlock>();
+                    })
+                    .ConfigurePipeline<IGetCartFulfillmentMethodsPipeline>(configure =>
+                    {
+                        configure.Add<FilterCartFulfillmentMethodsByCountryBlock>().After<FilterCartFulfillmentMethodsBlock>();
+                    })
                     .ConfigurePipeline<IConfigureServiceApiPipeline>(configure => configure.Add<ConfigureServiceApiBlock>()));
         }
     }

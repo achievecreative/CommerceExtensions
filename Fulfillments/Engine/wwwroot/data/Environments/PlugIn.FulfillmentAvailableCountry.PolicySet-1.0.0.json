@@ -1,0 +1,30 @@
+{
+  "$type": "Sitecore.Commerce.Core.PolicySet, Sitecore.Commerce.Core",
+  "Id": "Entity-PolicySet-FulfillmentCountryPolicySet",
+  "Version": 1,
+  "IsPersisted": false,
+  "Name": "FulfillmentCountryPolicySet",
+  "Policies": {
+    "$type": "System.Collections.Generic.List`1[[Sitecore.Commerce.Core.Policy, Sitecore.Commerce.Core]], mscorlib",
+    "$values": [{
+        "$type": "Achievecreative.Commerce.Plugin.Fulfillments.Policies.FulfillmentCountryPolicy, Achievecreative.Commerce.Plugin.Fulfillments",
+        "Methods": [{
+          "$type": "Achievecreative.Commerce.Plugin.Fulfillments.Policies.FulfillmentCountryPolicyItem, Achievecreative.Commerce.Plugin.Fulfillments",
+          "FulfillmentMethodName": "Domestic",
+          "AvailableCountries": [
+            "AUS"
+          ],
+          "NotAvailableCountries": [
+          ]
+        },{
+          "$tyoe": "Achievecreative.Commerce.Plugin.Fulfillments.Policies.FulfillmentCountryPolicyItem, Achievecreative.Commerce.Plugin.Fulfillments",
+          "FulfillmentMethodName": "International",
+          "AvailableCountries": [],
+          "NotAvailableCountries": [
+            "AUS"
+          ]
+        }]
+      }
+    ]
+  }
+}
