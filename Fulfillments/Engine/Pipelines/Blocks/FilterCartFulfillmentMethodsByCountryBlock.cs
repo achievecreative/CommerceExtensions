@@ -7,12 +7,13 @@ using Achievecreative.Commerce.Plugin.Fulfillments.Policies;
 using Sitecore.Commerce.Core;
 using Sitecore.Commerce.Plugin.Fulfillment;
 using Sitecore.Framework.Pipelines;
+using Sitecore.Framework.Pipelines.Abstractions;
 
 namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
 {
-    public class FilterCartFulfillmentMethodsByCountryBlock : PipelineBlock<IEnumerable<FulfillmentMethod>, IEnumerable<FulfillmentMethod>, CommercePipelineExecutionContext>
+    public class FilterCartFulfillmentMethodsByCountryBlock : AsyncPipelineBlock<IEnumerable<FulfillmentMethod>, IEnumerable<FulfillmentMethod>, CommercePipelineExecutionContext>
     {
-        public override Task<IEnumerable<FulfillmentMethod>> Run(IEnumerable<FulfillmentMethod> arg, CommercePipelineExecutionContext context)
+        public override Task<IEnumerable<FulfillmentMethod>> RunAsync(IEnumerable<FulfillmentMethod> arg, CommercePipelineExecutionContext context)
         {
             var methods = arg;
 
@@ -20,7 +21,7 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
 
             foreach (var fulfillmentMethod in methods)
             {
-                var policy = fulfillmentCountryPolicy.Methods.FirstOrDefault(x=>x.FulfillmentMethodName == fulfillmentMethod.Name);
+                var policy = fulfillmentCountryPolicy.Methods.FirstOrDefault(x => x.FulfillmentMethodName == fulfillmentMethod.Name);
                 if (policy != null)
                 {
                     if (policy.AvailableCountries == null)

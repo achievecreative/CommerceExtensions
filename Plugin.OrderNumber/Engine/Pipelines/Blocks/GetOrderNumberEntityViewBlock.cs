@@ -20,9 +20,9 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
      */
 
     [PipelineDisplayName("Order.block.GetOrderNumberEntityViewBlock")]
-    public class GetOrderNumberEntityViewBlock : PipelineBlock<EntityView, EntityView, CommercePipelineExecutionContext>
+    public class GetOrderNumberEntityViewBlock : AsyncPipelineBlock<EntityView, EntityView, CommercePipelineExecutionContext>
     {
-        public override Task<EntityView> Run(EntityView arg, CommercePipelineExecutionContext context)
+        public override Task<EntityView> RunAsync(EntityView arg, CommercePipelineExecutionContext context)
         {
             var entityViewArgument = context.CommerceContext.GetObject<EntityViewArgument>();
             if (entityViewArgument == null)

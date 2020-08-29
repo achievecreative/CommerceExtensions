@@ -17,7 +17,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Commands
         public virtual async Task<string> Process(CommerceContext commerceContext)
         {
             var pipeline = this.GetService<INewOrderNumberPipeline>();
-            var r = await pipeline.Run(new NewOrderNumberArgument(), commerceContext.PipelineContext.ContextOptions);
+            var r = await pipeline.RunAsync(new NewOrderNumberArgument(), commerceContext.PipelineContext.ContextOptions);
 
             return r;
         }

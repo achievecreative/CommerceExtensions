@@ -2,7 +2,7 @@
 
 using System.Threading.Tasks;
 using Achievecreative.Commerce.Plugin.OrderNumber.Models;
-using Microsoft.AspNetCore.OData.Builder;
+using Microsoft.AspNet.OData.Builder;
 using Sitecore.Commerce.Core;
 using Sitecore.Framework.Pipelines;
 
@@ -19,7 +19,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
     ///     </cref>
     /// </seealso>
     [PipelineDisplayName("OrderNumberPluginConfigureServiceApiBlock")]
-    public class ConfigureServiceApiBlock : PipelineBlock<ODataConventionModelBuilder, ODataConventionModelBuilder, CommercePipelineExecutionContext>
+    public class ConfigureServiceApiBlock : AsyncPipelineBlock<ODataConventionModelBuilder, ODataConventionModelBuilder, CommercePipelineExecutionContext>
     {
         /// <summary>
         /// The execute.
@@ -33,7 +33,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
         /// <returns>
         /// The <see cref="ODataConventionModelBuilder"/>.
         /// </returns>
-        public override Task<ODataConventionModelBuilder> Run(ODataConventionModelBuilder arg, CommercePipelineExecutionContext context)
+        public override Task<ODataConventionModelBuilder> RunAsync(ODataConventionModelBuilder arg, CommercePipelineExecutionContext context)
         {
             //Condition.Requires(arg).IsNotNull($"{Name}: The argument cannot be null.");
 

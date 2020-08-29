@@ -9,7 +9,7 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
-    public class AddOrderNumberToOrderEntityBlock : PipelineBlock<Order, Order, CommercePipelineExecutionContext>
+    public class AddOrderNumberToOrderEntityBlock : AsyncPipelineBlock<Order, Order, CommercePipelineExecutionContext>
     {
         private readonly INewOrderNumberPipeline _newOrderNumberPipeline;
         public AddOrderNumberToOrderEntityBlock(INewOrderNumberPipeline newOrderNumberPipeline)
@@ -17,7 +17,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             this._newOrderNumberPipeline = newOrderNumberPipeline;
         }
 
-        public override async Task<Order> Run(Order arg, CommercePipelineExecutionContext context)
+        public override async Task<Order> RunAsync(Order arg, CommercePipelineExecutionContext context)
         {
             var orderNumberPolicy = context.GetPolicy<OrderNumberPolicy>();
 
@@ -35,7 +35,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
                 pipelineArgs.CountryCode = ((PhysicalFulfillmentComponent)fulfillmentComponent).ShippingParty.CountryCode;
             }
 
-            var orderNumber = await _newOrderNumberPipeline.Run(pipelineArgs, context);
+            var orderNumber = await _newOrderNumberPipeline.RunAsync(pipelineArgs, context);
 
             var orderNumberComponent = new OrderNumberComponent()
             {

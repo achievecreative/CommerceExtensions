@@ -11,7 +11,7 @@ using Sitecore.Framework.Pipelines;
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
     [PipelineDisplayName("Achievecreative.CommerceGenerateNewOrderNumberBlock")]
-    public class GenerateNewOrderNumberBlock : PipelineBlock<GenerateOrderNumberArgument, OrderNumberEntity, CommercePipelineExecutionContext>
+    public class GenerateNewOrderNumberBlock : AsyncPipelineBlock<GenerateOrderNumberArgument, OrderNumberEntity, CommercePipelineExecutionContext>
     {
         private static readonly ConcurrentDictionary<string, object> LockTable = new ConcurrentDictionary<string, object>();
         
@@ -26,7 +26,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             this._persistEntityPipeline = persistEntityPipeline;
         }
 
-        public override Task<OrderNumberEntity> Run(GenerateOrderNumberArgument arg, CommercePipelineExecutionContext context)
+        public override Task<OrderNumberEntity> RunAsync(GenerateOrderNumberArgument arg, CommercePipelineExecutionContext context)
         {
             var orderNumberPolicy = context.GetPolicy<OrderNumberPolicy>();
 
@@ -44,7 +44,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 
                 var findEntityArgument = new FindEntityArgument(typeof(OrderNumberEntity), OrderNumberEntity.OrderNumberEntityId);
 
-                var foundEntity = _findEntityPipeline.Run(findEntityArgument, context).Result;
+                var foundEntity = _findEntityPipeline.RunAsync(findEntityArgument, context).Result;
 
                 var result = foundEntity as OrderNumberEntity;
 
@@ -65,7 +65,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
                     result.DateUpdated = DateTimeOffset.Now;
                 }
 
-                var persistEntity = _persistEntityPipeline.Run(new PersistEntityArgument(result), context).Result;
+                var persistEntity = _persistEntityPipeline.RunAsync(new PersistEntityArgument(result), context).Result;
 
                 return Task.FromResult(result);
             }

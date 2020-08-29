@@ -9,7 +9,7 @@ using Sitecore.Framework.Pipelines;
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
     [PipelineDisplayName("Achievecreative.CommerceGetNewOrderBlock")]
-    public class NewOrderNumberBlock : PipelineBlock<NewOrderNumberArgument, string, CommercePipelineExecutionContext>
+    public class NewOrderNumberBlock : AsyncPipelineBlock<NewOrderNumberArgument, string, CommercePipelineExecutionContext>
     {
         private readonly IGenerateNewOrderNumberPipeline _generateNewOrderNumberPipeline;
         public NewOrderNumberBlock(IGenerateNewOrderNumberPipeline generateNewOrderNumberPipeline)
@@ -17,9 +17,9 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             this._generateNewOrderNumberPipeline = generateNewOrderNumberPipeline;
         }
 
-        public override async Task<string> Run(NewOrderNumberArgument arg, CommercePipelineExecutionContext context)
+        public override async Task<string> RunAsync(NewOrderNumberArgument arg, CommercePipelineExecutionContext context)
         {
-            var orderNumberEntity = await _generateNewOrderNumberPipeline.Run(new GenerateOrderNumberArgument(), context);
+            var orderNumberEntity = await _generateNewOrderNumberPipeline.RunAsync(new GenerateOrderNumberArgument(), context);
 
             var orderNumber = orderNumberEntity.LastOrderNumber.ToString().PadLeft(arg.OrderNumberLength, arg.PaddingCharacter);
 

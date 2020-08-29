@@ -23,9 +23,9 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
 {
-    public class AddOrderNumberToIndexDocumentViewBlock : PipelineBlock<EntityView, EntityView, CommercePipelineExecutionContext>
+    public class AddOrderNumberToIndexDocumentViewBlock : AsyncPipelineBlock<EntityView, EntityView, CommercePipelineExecutionContext>
     {
-        public override Task<EntityView> Run(EntityView arg, CommercePipelineExecutionContext context)
+        public override Task<EntityView> RunAsync(EntityView arg, CommercePipelineExecutionContext context)
         {
             Condition.Requires<EntityView>(arg).IsNotNull(base.Name + ":argument cannot be null");
             var argument = context.CommerceContext.GetObjects<SearchIndexMinionArgument>().FirstOrDefault<SearchIndexMinionArgument>();

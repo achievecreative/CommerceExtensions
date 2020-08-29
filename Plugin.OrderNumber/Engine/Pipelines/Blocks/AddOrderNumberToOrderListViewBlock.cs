@@ -18,7 +18,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             this.getOrderPipeline = getOrderPipeline;
         }
 
-        public override async Task<EntityView> Run(EntityView arg, CommercePipelineExecutionContext context)
+        public override async Task<EntityView> RunAsync(EntityView arg, CommercePipelineExecutionContext context)
         {
             var entityViewArgument = context.CommerceContext.GetObject<EntityViewArgument>();
             if (entityViewArgument == null)
@@ -41,7 +41,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks
             foreach (var entityView in orderListEntityView)
             {
                 var orderId = entityView.ItemId;
-                var order = await this.getOrderPipeline.Run(orderId, context);
+                var order = await this.getOrderPipeline.RunAsync(orderId, context);
                 if (order != null)
                 {
                     entityView.Properties.Add(new ViewProperty()

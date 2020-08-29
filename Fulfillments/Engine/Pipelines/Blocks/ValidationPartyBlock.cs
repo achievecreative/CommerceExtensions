@@ -5,7 +5,7 @@ using Sitecore.Framework.Pipelines;
 
 namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
 {
-    public class ValidationPartyBlock : PipelineBlock<Party, Party, CommercePipelineExecutionContext>
+    public class ValidationPartyBlock : AsyncPipelineBlock<Party, Party, CommercePipelineExecutionContext>
     {
         private readonly IGetCountryPipeline _getCountryPipeline;
         public ValidationPartyBlock(IGetCountryPipeline getCountryPipeline)
@@ -13,7 +13,7 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
             _getCountryPipeline = getCountryPipeline;
         }
 
-        public override async Task<Party> Run(Party arg, CommercePipelineExecutionContext context)
+        public override async Task<Party> RunAsync(Party arg, CommercePipelineExecutionContext context)
         {
             Condition.Requires<Party>(arg).IsNotNull(base.Name + ": The argument cannot be null.");
             var validationPolicy = ValidationPolicy.GetValidationPolicy(context.CommerceContext, typeof(Party));
@@ -39,7 +39,7 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
 
             if (!string.IsNullOrEmpty(arg.Country))
             {
-                var country = await _getCountryPipeline.Run(new GetCountryArgument(arg.Country), context);
+                var country = await _getCountryPipeline.RunAsync(new GetCountryArgument(arg.Country), context);
                 if (country != null && (country.Name == arg.Country || country.IsoCode2 == arg.Country))
                 {
                     arg.Country = country.Name;
@@ -49,7 +49,7 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
                 return;
             }
 
-            var countryByCountryCode = await _getCountryPipeline.Run(new GetCountryArgument(arg.CountryCode), context);
+            var countryByCountryCode = await _getCountryPipeline.RunAsync(new GetCountryArgument(arg.CountryCode), context);
             if (countryByCountryCode != null && (countryByCountryCode.IsoCode2 == arg.CountryCode || countryByCountryCode.Name == arg.CountryCode))
             {
                 arg.Country = countryByCountryCode.Name;
