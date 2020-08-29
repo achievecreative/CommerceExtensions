@@ -3,7 +3,7 @@
     <Description>Sitecore Commerce Sample Plugin Template</Description>
     <VersionPrefix>1.0.0</VersionPrefix>
     <Authors>Sitecore</Authors>
-    <TargetFramework>net471</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <PackageTags>$(PackageTags);Commerce;Sample;Plugin</PackageTags>
     <PackageIconUrl>http://www.sitecore.net/favicon.ico</PackageIconUrl>
     <PackageProjectUrl>http://www.sitecore.net/</PackageProjectUrl>

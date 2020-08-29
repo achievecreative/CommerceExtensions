@@ -218,12 +218,11 @@ namespace Sitecore.Commerce.ServiceProxy
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="query">The query.</param>
         /// <returns>A value</returns>
-        public static CommerceCommand DoCommand<T>(DataServiceActionQuerySingle<T> query)
+        public static T DoCommand<T>(DataServiceActionQuerySingle<T> query) where T : CommerceCommand
         {
             try
             {
-                var response = query.GetValue();
-                var commandResponse = response as CommerceCommand;
+                var commandResponse = query.GetValue();
                 if (commandResponse == null)
                 {
                     return null;
@@ -271,12 +270,11 @@ namespace Sitecore.Commerce.ServiceProxy
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="query">The query.</param>
         /// <returns>A value</returns>
-        public static CommerceOps.Sitecore.Commerce.Core.Commands.CommerceCommand DoOpsCommand<T>(DataServiceActionQuerySingle<T> query)
+        public static T DoOpsCommand<T>(DataServiceActionQuerySingle<T> query) where T : CommerceOps.Sitecore.Commerce.Core.Commands.CommerceCommand
         {
             try
             {
-                var response = query.GetValue();
-                var commandResponse = response as CommerceOps.Sitecore.Commerce.Core.Commands.CommerceCommand;
+                var commandResponse = query.GetValue();
                 if (commandResponse == null)
                 {
                     return null;

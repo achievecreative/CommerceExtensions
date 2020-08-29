@@ -5,6 +5,7 @@ using CommerceOps.Sitecore.Commerce.Core.Commands;
 using CommerceOps.Sitecore.Commerce.Engine;
 using Microsoft.OData.Client;
 using Sitecore.Commerce.Plugin.Carts;
+using Sitecore.Commerce.Plugin.Customers;
 using Sitecore.Framework.Conditions;
 
 namespace Sitecore.Commerce.ServiceProxy.Extensions
@@ -92,6 +93,18 @@ namespace Sitecore.Commerce.ServiceProxy.Extensions
             return new DataServiceActionQuerySingle<UpdateCartLineCommand>(container, container.BaseUri.OriginalString.Trim('/') + $"/UpdateCartLine?$expand={expands}", new BodyOperationParameter("cartId", cartId),
                 new BodyOperationParameter("cartLineId", cartLineId),
                 new BodyOperationParameter("quantity", quantity));
+        }
+
+        /// <summary>
+        /// Gets the customer by its user name.
+        /// </summary>
+        /// <param name="container">The service container.</param>
+        /// <param name="userName">The user name.</param>
+        /// <param name="expands">The expands options.</param>
+        /// <returns></returns>
+        public static DataServiceActionQuerySingle<Customer> GetCustomer(this Engine.Container container, string userName, string expands)
+        {
+            return new DataServiceActionQuerySingle<Customer>(container, container.BaseUri.OriginalString.Trim('/') + $"/GetCustomer?$expand={expands}", new BodyOperationParameter("userName", userName));
         }
     }
 }
