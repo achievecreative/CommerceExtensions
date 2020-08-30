@@ -7,6 +7,7 @@ using Sitecore.Commerce.Core;
 using Sitecore.Commerce.Plugin.Fulfillment;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
+using Sitecore.Framework.Rules;
 
 namespace Achievecreative.Commerce.Plugin.Fulfillments
 {
@@ -26,6 +27,8 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments
             var assembly = Assembly.GetExecutingAssembly();
             services.RegisterAllPipelineBlocks(assembly);
             services.RegisterAllCommands(assembly);
+
+            services.AddRules(configure => configure.Registry(a => a.RegisterThisAssembly()));
 
             services.Sitecore().Pipelines(config =>
                     config.ConfigurePipeline<IValidatePartyPipeline>(configure =>

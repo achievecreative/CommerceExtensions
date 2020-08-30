@@ -13,17 +13,14 @@
     <Compile Remove="Minions\**" />
     <Compile Remove="Pipelines\Blocks\DoActions\**" />
     <Compile Remove="Pipelines\Blocks\EntityViews\**" />
-    <Compile Remove="Rules\**" />
     <EmbeddedResource Remove="FrameworkExtensions\**" />
     <EmbeddedResource Remove="Minions\**" />
     <EmbeddedResource Remove="Pipelines\Blocks\DoActions\**" />
     <EmbeddedResource Remove="Pipelines\Blocks\EntityViews\**" />
-    <EmbeddedResource Remove="Rules\**" />
     <None Remove="FrameworkExtensions\**" />
     <None Remove="Minions\**" />
     <None Remove="Pipelines\Blocks\DoActions\**" />
     <None Remove="Pipelines\Blocks\EntityViews\**" />
-    <None Remove="Rules\**" />
   </ItemGroup>
    
   <ItemGroup>
