@@ -2940,62 +2940,29 @@
         <Property Name="Headers" Type="Collection(Sitecore.Commerce.Engine.KeyValuePair_2OfString_StringValues)" />
       </ComplexType>
     </Schema>
-    <Schema Namespace="System" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-      <ComplexType Name="OdataUri">
-        <Property Name="AbsoluteUri" Type="Edm.String" />
-        <Property Name="OriginalString" Type="Edm.String" />
-        <Property Name="PathAndQuery" Type="Edm.String" />
-        <Property Name="Segments" Type="Collection(Edm.String)" />
-      </ComplexType>
-    </Schema>
-    <Schema Namespace="Plugin.Sample.ContentHub" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-      <EntityType Name="ContentHubImage" BaseType="Sitecore.Commerce.Core.Component">
-        <Property Name="Width" Type="Edm.Int32" Nullable="false" />
-        <Property Name="Height" Type="Edm.Int32" Nullable="false" />
-        <Property Name="IsMaster" Type="Edm.Boolean" Nullable="false" />
-        <Property Name="AlternateText" Type="Edm.String" />
-        <Property Name="Url" Type="System.OdataUri" Nullable="false" />
+    <Schema Namespace="Achievecreative.Commerce.Plugin.OrderNumber.Models" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="OrderNumberModel">
+        <Key>
+          <PropertyRef Name="OrderNumber" />
+        </Key>
+        <Property Name="OrderNumber" Type="Edm.String" Nullable="false" />
+        <Property Name="DateTime" Type="Edm.DateTimeOffset" Nullable="false" />
       </EntityType>
     </Schema>
     <Schema Namespace="Sitecore.Commerce.Engine" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-      <ComplexType Name="AssetSynchronizationPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="EntityToMasterAssetRelationName" Type="Edm.String" />
-        <Property Name="EntityToAssetRelationName" Type="Edm.String" />
-        <Property Name="AssetToPublicLinkRelationName" Type="Edm.String" />
-        <Property Name="AssetsAlternateTextFieldName" Type="Edm.String" />
+      <ComplexType Name="FulfillmentCountryPolicy" BaseType="Sitecore.Commerce.Core.Policy">
+        <Property Name="Methods" Type="Collection(Sitecore.Commerce.Engine.FulfillmentCountryPolicyItem)" />
       </ComplexType>
-      <ComplexType Name="AzureServiceBusPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="ConnectionString" Type="Edm.String" />
-        <Property Name="TopicName" Type="Edm.String" />
-        <Property Name="SubscriptionName" Type="Edm.String" />
+      <ComplexType Name="FulfillmentCountryPolicyItem" BaseType="Sitecore.Commerce.Core.Policy">
+        <Property Name="FulfillmentMethodName" Type="Edm.String" />
+        <Property Name="AvailableCountries" Type="Collection(Edm.String)" />
+        <Property Name="NotAvailableCountries" Type="Collection(Edm.String)" />
       </ComplexType>
-      <ComplexType Name="BizFxPolicy" BaseType="Sitecore.Commerce.Core.Policy" />
-      <ComplexType Name="ContentHubClientPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="EndpointUrl" Type="Edm.String" />
-        <Property Name="UserName" Type="Edm.String" />
-        <Property Name="Password" Type="Edm.String" />
-        <Property Name="ClientId" Type="Edm.String" />
-        <Property Name="ClientSecret" Type="Edm.String" />
-        <Property Name="KnownSSORedirects" Type="Edm.String" />
-        <Property Name="TimeoutInSeconds" Type="Edm.Int32" Nullable="false" />
-        <Property Name="RetryCount" Type="Edm.Int32" Nullable="false" />
-      </ComplexType>
-      <ComplexType Name="ProductSynchronizationPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="PropertyMapping" Type="Collection(Sitecore.Commerce.Engine.PropertyMap)" />
-      </ComplexType>
-      <ComplexType Name="PropertyMap" />
-      <ComplexType Name="SynchronizationPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="DefaultCulture" Type="Edm.String" />
-        <Property Name="EntityForeignKey" Type="Edm.String" />
-        <Property Name="ProductEntityType" Type="Edm.String" />
-        <Property Name="AssetEntityType" Type="Edm.String" />
-        <Property Name="PublicLinkEntityType" Type="Edm.String" />
-      </ComplexType>
-      <ComplexType Name="BraintreeClientPolicy" BaseType="Sitecore.Commerce.Core.Policy">
-        <Property Name="Environment" Type="Edm.String" />
-        <Property Name="MerchantId" Type="Edm.String" />
-        <Property Name="PublicKey" Type="Edm.String" />
-        <Property Name="PrivateKey" Type="Edm.String" />
+      <ComplexType Name="OrderNumberPolicy" BaseType="Sitecore.Commerce.Core.Policy">
+        <Property Name="Prefix" Type="Edm.String" />
+        <Property Name="StartNumber" Type="Edm.Int32" Nullable="false" />
+        <Property Name="OrderNumberLength" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PaddingCharacter" Type="Edm.String" Nullable="false" />
       </ComplexType>
       <ComplexType Name="MultiCurrency">
         <Property Name="Values" Type="Collection(Sitecore.Commerce.Core.Money)" />
@@ -3013,7 +2980,9 @@
         <Property Name="PropertyPath" Type="Edm.String" />
       </ComplexType>
       <ComplexType Name="KeyValuePair_2OfString_Totals" />
-      <EntityType Name="ContentHubImagesComponent" BaseType="Sitecore.Commerce.Core.Component" />
+      <EntityType Name="OrderNumberComponent" BaseType="Sitecore.Commerce.Core.Component">
+        <Property Name="OrderNumber" Type="Edm.String" />
+      </EntityType>
       <ComplexType Name="CustomerReview">
         <Property Name="Name" Type="Edm.String" />
         <Property Name="UsersLocation" Type="Edm.String" />
@@ -3053,6 +3022,12 @@
         <Property Name="ElseActions" Type="Collection(Sitecore.Commerce.Engine.IAction)" />
       </ComplexType>
       <ComplexType Name="IAction" Abstract="true" />
+      <EntityType Name="NewOrderNumberEntity" BaseType="Sitecore.Commerce.Core.CommerceEntity">
+        <Property Name="OrderNumber" Type="Edm.String" />
+      </EntityType>
+      <EntityType Name="OrderNumberEntity" BaseType="Sitecore.Commerce.Core.CommerceEntity">
+        <Property Name="LastOrderNumber" Type="Edm.Int32" Nullable="false" />
+      </EntityType>
       <ComplexType Name="SearchOption">
         <Property Name="Phrase" Type="Edm.String" />
         <Property Name="ReturnTypes" Type="Edm.Int32" Nullable="false" />
@@ -3068,7 +3043,7 @@
         <Property Name="ListDisplayName" Type="Edm.String" />
         <Property Name="TotalItemCount" Type="Edm.Int64" Nullable="false" />
       </ComplexType>
-      <EntityType Name="ImportEntityCommand" BaseType="Sitecore.Commerce.Core.Commands.CommerceCommand" />
+      <EntityType Name="NewOrderNumberCommand" BaseType="Sitecore.Commerce.Core.Commands.CommerceCommand" />
       <EntityType Name="PersistEntityCommand" BaseType="Sitecore.Commerce.Plugin.SQL.SQLCommerceCommand" Abstract="true" />
       <ComplexType Name="EntityTagHeaderValue" />
       <ComplexType Name="ZipArchiveEntry">
@@ -3493,16 +3468,6 @@
         <Parameter Name="status" Type="Edm.String" />
         <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
       </Action>
-      <Action Name="AddCouponToCart">
-        <Parameter Name="cartId" Type="Edm.String" />
-        <Parameter Name="couponCode" Type="Edm.String" />
-        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
-      </Action>
-      <Action Name="RemoveCouponFromCart">
-        <Parameter Name="cartId" Type="Edm.String" />
-        <Parameter Name="couponCode" Type="Edm.String" />
-        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
-      </Action>
       <Function Name="GetCartFulfillmentOptions">
         <Parameter Name="cartId" Type="Edm.String" />
         <ReturnType Type="Collection(Sitecore.Commerce.Plugin.Fulfillment.FulfillmentOption)" />
@@ -3576,6 +3541,26 @@
         <Parameter Name="payment" Type="Sitecore.Commerce.Plugin.GiftCards.GiftCardPaymentComponent" />
         <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
       </Action>
+      <Action Name="RequestRma">
+        <Parameter Name="orderId" Type="Edm.String" />
+        <Parameter Name="reason" Type="Edm.String" />
+        <Parameter Name="lines" Type="Collection(Sitecore.Commerce.Plugin.Returns.RmaLineComponent)" />
+        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
+      </Action>
+      <Action Name="ReturnedItemReceived">
+        <Parameter Name="rmaFriendlyId" Type="Edm.String" />
+        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
+      </Action>
+      <Action Name="AddCouponToCart">
+        <Parameter Name="cartId" Type="Edm.String" />
+        <Parameter Name="couponCode" Type="Edm.String" />
+        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
+      </Action>
+      <Action Name="RemoveCouponFromCart">
+        <Parameter Name="cartId" Type="Edm.String" />
+        <Parameter Name="couponCode" Type="Edm.String" />
+        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
+      </Action>
       <Action Name="ExportInventorySets">
         <Parameter Name="fileName" Type="Edm.String" />
         <Parameter Name="mode" Type="Edm.String" />
@@ -3601,16 +3586,6 @@
         <Parameter Name="itemIds" Type="Collection(Edm.String)" />
         <Parameter Name="includeBundledItemsInventory" Type="Edm.Boolean" Nullable="false" />
         <ReturnType Type="Collection(Sitecore.Commerce.Plugin.Inventory.ConnectItemAvailability)" />
-      </Action>
-      <Action Name="RequestRma">
-        <Parameter Name="orderId" Type="Edm.String" />
-        <Parameter Name="reason" Type="Edm.String" />
-        <Parameter Name="lines" Type="Collection(Sitecore.Commerce.Plugin.Returns.RmaLineComponent)" />
-        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
-      </Action>
-      <Action Name="ReturnedItemReceived">
-        <Parameter Name="rmaFriendlyId" Type="Edm.String" />
-        <ReturnType Type="Sitecore.Commerce.Core.Commands.CommerceCommand" />
       </Action>
       <EntityContainer Name="Container">
         <EntitySet Name="Commands" EntityType="Sitecore.Commerce.Core.Commands.CommerceCommand">
@@ -3695,12 +3670,6 @@
         <EntitySet Name="SalesActivities" EntityType="Sitecore.Commerce.Plugin.Orders.SalesActivity">
           <NavigationPropertyBinding Path="Components" Target="Components" />
         </EntitySet>
-        <EntitySet Name="Coupons" EntityType="Sitecore.Commerce.Plugin.Coupons.Coupon">
-          <NavigationPropertyBinding Path="Components" Target="Components" />
-        </EntitySet>
-        <EntitySet Name="PrivateCouponGroups" EntityType="Sitecore.Commerce.Plugin.Coupons.PrivateCouponGroup">
-          <NavigationPropertyBinding Path="Components" Target="Components" />
-        </EntitySet>
         <EntitySet Name="FulfillmentOptions" EntityType="Sitecore.Commerce.Plugin.Fulfillment.FulfillmentOption">
           <NavigationPropertyBinding Path="ChildFulfillmentOptions" Target="FulfillmentOptions" />
           <NavigationPropertyBinding Path="Components" Target="Components" />
@@ -3736,19 +3705,26 @@
         <EntitySet Name="GiftCards" EntityType="Sitecore.Commerce.Plugin.GiftCards.GiftCard">
           <NavigationPropertyBinding Path="Components" Target="Components" />
         </EntitySet>
+        <EntitySet Name="ReturnMerchandiseAuthorizations" EntityType="Sitecore.Commerce.Plugin.Returns.ReturnMerchandiseAuthorization">
+          <NavigationPropertyBinding Path="Components" Target="Components" />
+        </EntitySet>
+        <EntitySet Name="Coupons" EntityType="Sitecore.Commerce.Plugin.Coupons.Coupon">
+          <NavigationPropertyBinding Path="Components" Target="Components" />
+        </EntitySet>
+        <EntitySet Name="PrivateCouponGroups" EntityType="Sitecore.Commerce.Plugin.Coupons.PrivateCouponGroup">
+          <NavigationPropertyBinding Path="Components" Target="Components" />
+        </EntitySet>
         <EntitySet Name="InventorySets" EntityType="Sitecore.Commerce.Plugin.Inventory.InventorySet">
           <NavigationPropertyBinding Path="Components" Target="Components" />
         </EntitySet>
         <EntitySet Name="InventoryInformation" EntityType="Sitecore.Commerce.Plugin.Inventory.InventoryInformation">
           <NavigationPropertyBinding Path="Components" Target="Components" />
         </EntitySet>
-        <EntitySet Name="ReturnMerchandiseAuthorizations" EntityType="Sitecore.Commerce.Plugin.Returns.ReturnMerchandiseAuthorization">
-          <NavigationPropertyBinding Path="Components" Target="Components" />
-        </EntitySet>
         <EntitySet Name="JournalEntries" EntityType="Sitecore.Commerce.Plugin.Journaling.JournalEntry">
           <NavigationPropertyBinding Path="Components" Target="Components" />
           <NavigationPropertyBinding Path="Entities" Target="CommerceEntities" />
         </EntitySet>
+        <EntitySet Name="NewOrderNumber" EntityType="Achievecreative.Commerce.Plugin.OrderNumber.Models.OrderNumberModel" />
         <ActionImport Name="AddPolicy" Action="Sitecore.Commerce.Engine.AddPolicy" EntitySet="Commands" />
         <ActionImport Name="RemovePolicy" Action="Sitecore.Commerce.Engine.RemovePolicy" EntitySet="Commands" />
         <FunctionImport Name="GetListMetadata" Function="Sitecore.Commerce.Engine.GetListMetadata" IncludeInServiceDocument="true" />
@@ -3824,8 +3800,6 @@
         <ActionImport Name="CreateOrder" Action="Sitecore.Commerce.Engine.CreateOrder" EntitySet="Commands" />
         <ActionImport Name="CancelOrder" Action="Sitecore.Commerce.Engine.CancelOrder" EntitySet="Commands" />
         <ActionImport Name="SetOrderStatus" Action="Sitecore.Commerce.Engine.SetOrderStatus" EntitySet="Commands" />
-        <ActionImport Name="AddCouponToCart" Action="Sitecore.Commerce.Engine.AddCouponToCart" EntitySet="Commands" />
-        <ActionImport Name="RemoveCouponFromCart" Action="Sitecore.Commerce.Engine.RemoveCouponFromCart" EntitySet="Commands" />
         <FunctionImport Name="GetCartFulfillmentOptions" Function="Sitecore.Commerce.Engine.GetCartFulfillmentOptions" EntitySet="FulfillmentOptions" IncludeInServiceDocument="true" />
         <FunctionImport Name="GetCartWithFulfillmentOptions" Function="Sitecore.Commerce.Engine.GetCartWithFulfillmentOptions" EntitySet="CartFulfillments" IncludeInServiceDocument="true" />
         <FunctionImport Name="GetCartLineFulfillmentOptions" Function="Sitecore.Commerce.Engine.GetCartLineFulfillmentOptions" EntitySet="FulfillmentOptions" IncludeInServiceDocument="true" />
@@ -3842,12 +3816,14 @@
         <ActionImport Name="RemovePayment" Action="Sitecore.Commerce.Engine.RemovePayment" EntitySet="Commands" />
         <FunctionImport Name="GetClientToken" Function="Sitecore.Commerce.Engine.GetClientToken" IncludeInServiceDocument="true" />
         <ActionImport Name="AddGiftCardPayment" Action="Sitecore.Commerce.Engine.AddGiftCardPayment" EntitySet="Commands" />
+        <ActionImport Name="RequestRma" Action="Sitecore.Commerce.Engine.RequestRma" EntitySet="Commands" />
+        <ActionImport Name="ReturnedItemReceived" Action="Sitecore.Commerce.Engine.ReturnedItemReceived" EntitySet="Commands" />
+        <ActionImport Name="AddCouponToCart" Action="Sitecore.Commerce.Engine.AddCouponToCart" EntitySet="Commands" />
+        <ActionImport Name="RemoveCouponFromCart" Action="Sitecore.Commerce.Engine.RemoveCouponFromCart" EntitySet="Commands" />
         <ActionImport Name="ExportInventorySets" Action="Sitecore.Commerce.Engine.ExportInventorySets" />
         <ActionImport Name="ImportInventorySets" Action="Sitecore.Commerce.Engine.ImportInventorySets" EntitySet="Commands" />
         <ActionImport Name="ImportLocalInventorySets" Action="Sitecore.Commerce.Engine.ImportLocalInventorySets" EntitySet="Commands" />
         <ActionImport Name="GetBulkStockInformation" Action="Sitecore.Commerce.Engine.GetBulkStockInformation" />
-        <ActionImport Name="RequestRma" Action="Sitecore.Commerce.Engine.RequestRma" EntitySet="Commands" />
-        <ActionImport Name="ReturnedItemReceived" Action="Sitecore.Commerce.Engine.ReturnedItemReceived" EntitySet="Commands" />
       </EntityContainer>
     </Schema>
   </edmx:DataServices>

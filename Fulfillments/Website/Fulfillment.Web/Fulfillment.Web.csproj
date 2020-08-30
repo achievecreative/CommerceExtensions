@@ -980,6 +980,12 @@
   <ItemGroup>
     <Folder Include="App_Start\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ServiceProxy\Sitecore.Commerce.ServiceProxy\Sitecore.Commerce.ServiceProxy.csproj">
+      <Project>{c1b1df54-472d-4047-8c49-7a2c8790eedf}</Project>
+      <Name>Sitecore.Commerce.ServiceProxy</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
