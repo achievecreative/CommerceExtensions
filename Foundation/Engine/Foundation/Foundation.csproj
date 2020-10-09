@@ -1,31 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>The Sitecore Commerce Sample Plugin.</Description>
     <Authors>Sitecore</Authors>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageTags>$(PackageTags);Commerce;Plugin;</PackageTags>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <AssemblyName>Achievecreative.Commerce.Plugin.Fulfillments</AssemblyName>
-    <RootNamespace>Achievecreative.Commerce.Plugin.Fulfillments</RootNamespace>
+    <AssemblyName>Achievecreative.Commerce.Plugin.Foundation</AssemblyName>
+    <RootNamespace>Achievecreative.Commerce.Plugin.Foundation</RootNamespace>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="FrameworkExtensions\**" />
-    <Compile Remove="Minions\**" />
-    <Compile Remove="Pipelines\Blocks\DoActions\**" />
-    <Compile Remove="Pipelines\Blocks\EntityViews\**" />
-    <EmbeddedResource Remove="FrameworkExtensions\**" />
-    <EmbeddedResource Remove="Minions\**" />
-    <EmbeddedResource Remove="Pipelines\Blocks\DoActions\**" />
-    <EmbeddedResource Remove="Pipelines\Blocks\EntityViews\**" />
-    <None Remove="FrameworkExtensions\**" />
-    <None Remove="Minions\**" />
-    <None Remove="Pipelines\Blocks\DoActions\**" />
-    <None Remove="Pipelines\Blocks\EntityViews\**" />
-  </ItemGroup>
    
   <ItemGroup>
-    <PackageReference Include="Sitecore.Commerce.Core" Version="6.0.*" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Fulfillment" Version="6.0.52" />
+    <PackageReference Include="Sitecore.Commerce.Core" Version="6.0.92" />
   </ItemGroup>
    
   <ItemGroup>
@@ -33,11 +18,15 @@
     <Folder Include="Components\" />
     <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
+    <Folder Include="FrameworkExtensions\" />
+    <Folder Include="Minions\" />
     <Folder Include="Models\" />
-    <Folder Include="NewFolder\" />
     <Folder Include="Pipelines\Arguments\" />
-    <Folder Include="Pipelines\Blocks\Models\" />
+    <Folder Include="Pipelines\Blocks\DoActions\" />
+    <Folder Include="Pipelines\Blocks\EntityViews\" />
     <Folder Include="Policies\" />
+    <Folder Include="Rules\Conditions\" />
+    <Folder Include="Rules\Actions\" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

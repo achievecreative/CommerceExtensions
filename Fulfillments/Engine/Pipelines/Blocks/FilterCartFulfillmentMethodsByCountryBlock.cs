@@ -21,7 +21,7 @@ namespace Achievecreative.Commerce.Plugin.Fulfillments.Pipelines.Blocks
 
             foreach (var fulfillmentMethod in methods)
             {
-                var policy = fulfillmentCountryPolicy.Methods.FirstOrDefault(x => x.FulfillmentMethodName == fulfillmentMethod.Name);
+                var policy = fulfillmentCountryPolicy?.Methods?.FirstOrDefault(x => x.FulfillmentMethodName == fulfillmentMethod.Name);
                 if (policy != null)
                 {
                     if (policy.AvailableCountries == null)

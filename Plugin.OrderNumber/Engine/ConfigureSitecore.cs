@@ -1,6 +1,7 @@
 ﻿// © 2019 Sitecore Corporation A/S. All rights reserved. Sitecore® is a registered trademark of Sitecore Corporation A/S.
 
 using System.Reflection;
+using Achievecreative.Commerce.Plugin.Foundation.Pipelines.Blocks;
 using Achievecreative.Commerce.Plugin.OrderNumber.Pipelines;
 using Achievecreative.Commerce.Plugin.OrderNumber.Pipelines.Blocks;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,6 +44,7 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
                     })
                     .ConfigurePipeline<ICreateOrderPipeline>(configure =>
                     {
+                        configure.Add<EntityOutputBlock<Order>>().After<CreateOrderBlock>();
                         configure.Add<AddOrderNumberToOrderEntityBlock>().After<IncrementOrderPerformanceCountersBlock>();
                     })
                     .ConfigurePipeline<IGetEntityViewPipeline>(configure =>

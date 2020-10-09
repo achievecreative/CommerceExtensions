@@ -39,4 +39,8 @@
     <Reference Include="System.Transactions" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Engine\Foundation\Foundation.csproj" />
+  </ItemGroup>
 </Project>
