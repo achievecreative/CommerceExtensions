@@ -5,7 +5,7 @@ using Sitecore.Commerce.Core;
 
 namespace Achievecreative.Commerce.Plugin.Orders.Policies
 {
-    public class OrderStatusPolicy : Policy
+    public class NewOrderStatusPolicy : Policy
     {
         /// <summary>
         /// User has enter the payment detail, waiting for the Payment result message from Payment gateway

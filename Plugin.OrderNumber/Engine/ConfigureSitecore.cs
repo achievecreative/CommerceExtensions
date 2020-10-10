@@ -44,7 +44,6 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
                     })
                     .ConfigurePipeline<ICreateOrderPipeline>(configure =>
                     {
-                        configure.Add<EntityOutputBlock<Order>>().After<CreateOrderBlock>();
                         configure.Add<AddOrderNumberToOrderEntityBlock>().After<IncrementOrderPerformanceCountersBlock>();
                     })
                     .ConfigurePipeline<IGetEntityViewPipeline>(configure =>

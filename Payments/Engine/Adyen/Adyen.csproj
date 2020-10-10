@@ -5,18 +5,18 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <PackageTags>$(PackageTags);Commerce;Plugin;</PackageTags>
     <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-    <AssemblyName>Achievecreative.Commerce.Plugin.Orders</AssemblyName>
-    <RootNamespace>Achievecreative.Commerce.Plugin.Orders</RootNamespace>
+    <AssemblyName>Achievecreative.Commerce.Plugin.Payments.Adyen</AssemblyName>
+    <RootNamespace>Achievecreative.Commerce.Plugin.Payments.Adyen</RootNamespace>
   </PropertyGroup>
    
   <ItemGroup>
     <PackageReference Include="Sitecore.Commerce.Core" Version="6.0.92" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.Orders" Version="6.0.52" />
-    <PackageReference Include="Sitecore.Commerce.Plugin.SQL" Version="6.0.47" />
+    <PackageReference Include="Sitecore.Commerce.Plugin.Payments" Version="6.0.52" />
   </ItemGroup>
    
   <ItemGroup>
     <Folder Include="Commands\" />
+    <Folder Include="Components\" />
     <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
     <Folder Include="FrameworkExtensions\" />
@@ -25,12 +25,9 @@
     <Folder Include="Pipelines\Arguments\" />
     <Folder Include="Pipelines\Blocks\DoActions\" />
     <Folder Include="Pipelines\Blocks\EntityViews\" />
+    <Folder Include="Policies\" />
     <Folder Include="Rules\Conditions\" />
     <Folder Include="Rules\Actions\" />
-  </ItemGroup>
-   
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\Engine\Foundation\Foundation.csproj" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

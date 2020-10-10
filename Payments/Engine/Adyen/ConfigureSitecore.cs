@@ -4,17 +4,13 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Reflection;
-using Achievecreative.Commerce.Plugin.Foundation.Pipelines.Blocks;
-using Achievecreative.Commerce.Plugin.Orders.Pipelines.Blocks;
 using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Commerce.Core;
-using Sitecore.Commerce.Plugin.Orders;
-using Sitecore.Commerce.Plugin.SQL;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
+using System.Reflection;
 
-namespace Achievecreative.Commerce.Plugin.Orders
+namespace Achievecreative.Commerce.Plugin.Payments.Adyen
 {
     /// <summary>The configure sitecore class.</summary>
     public class ConfigureSitecore : IConfigureSitecore
@@ -28,19 +24,15 @@ namespace Achievecreative.Commerce.Plugin.Orders
             services.RegisterAllPipelineBlocks(assembly);
             services.RegisterAllCommands(assembly);
 
-            services.Sitecore().Pipelines(builder =>
-            {
-                builder.ConfigurePipeline<IFindEntitiesInListPipeline>(configure =>
-                {
-                    configure.Add<EntityOutputBlock<FindEntitiesInListArgument>>().After<FindEntitiesInListBlock>();
-                });
+            //services.Sitecore().Rules(config => config.Registry(registry => registry.RegisterAssembly(assembly)));
 
-                builder.ConfigurePipeline<ICreateOrderPipeline>(configure =>
-                {
-                    configure.Add<EntityOutputBlock<Order>>().After<CreateOrderBlock>();
-                    configure.Add<MoveToWaitingForPaymentOrderBlock>().After<CreateOrderBlock>();
-                });
-            });
+            //services.Sitecore().Pipelines(builder => builder
+
+            //.ConfigurePipeline<IConfigureServiceApiPipeline>(pipeline => pipeline
+            //    .Add<ConfigureServiceApiBlock>()
+            //)
+
+            //);
         }
     }
 }

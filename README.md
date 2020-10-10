@@ -1,14 +1,17 @@
 # Sitecore Experience Commerce Plugins
 
-1. Order number
-   
-2. Shipping countries
+- [x] Order number
+- [x] Shipping countries
+- [x] Different shipping method for different country
+- [x] Delivery country condition
+- [ ] New order status
+  - [ ] WaitingForPayment - Default order status after order created. Move to Pending after payment confirmed, or move to ManuallyReview if payment need a manually review
+  - [ ] ManuallyReview - Move order to this status if payment need a manually review. Next status could be: Pending, Cancelled
+- [ ] A new API to received the payment notification and saved to the order
+- [ ] Payment notification process minion
+- [ ] Payment notification process pipeline
+- [ ] 
 
-3. Different shipping method for different country
-
-4. Delivery country condition
-
-   
 ## VS Extension
 
 ~~### Microsoft.OData.ConnectedService.vsix - 0.3.1~~
