@@ -47,7 +47,10 @@ namespace Achievecreative.Commerce.Plugin.Payments.Adyen
 
                 config.AddPipeline<IWaitingForPaymentOrdersMinionPipeline, WaitingForPaymentOrdersMinionPipeline>(configure =>
                 {
-                    configure.Add<WaitingForPaymentBlock>().Add<IPersistEntityPipeline>();
+                    configure
+                        .Add<CheckAdyenPaymentBlock>()
+                        .Add<ChangeOrderStatusBlock>()
+                        .Add<IPersistEntityPipeline>();
                 });
             });
         }

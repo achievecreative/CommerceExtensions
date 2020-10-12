@@ -31,10 +31,10 @@ namespace Achievecreative.Commerce.Plugin.Payments.Adyen.Minions
                 var list = argument.List;
                 do
                 {
-                    foreach (var guid in list.Items.Select(x => x.UniqueId))
+                    foreach (var entityId in argument.EntityReferences.Select(x => x.EntityId))
                     {
                         var options = new CommercePipelineExecutionContextOptions(MinionContext);
-                        var result = await waitingForPaymentOrdersMinionPipeline.RunAsync(new WaitingForPaymentOrdersMinionArgument() { OrderUniqueId = guid }, options);
+                        var result = await waitingForPaymentOrdersMinionPipeline.RunAsync(new WaitingForPaymentOrdersMinionArgument() { EntityId = entityId }, options);
                         if (result)
                         {
                             totalProcessedItem++;

@@ -19,7 +19,6 @@
     <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
     <Folder Include="FrameworkExtensions\" />
-    <Folder Include="Models\" />
     <Folder Include="Pipelines\Blocks\DoActions\" />
     <Folder Include="Pipelines\Blocks\EntityViews\" />
     <Folder Include="Rules\Conditions\" />
