@@ -32,12 +32,11 @@ namespace Achievecreative.Commerce.Plugin.Orders
             {
                 builder.ConfigurePipeline<IFindEntitiesInListPipeline>(configure =>
                 {
-                    configure.Add<EntityOutputBlock<FindEntitiesInListArgument>>().After<FindEntitiesInListBlock>();
+                    
                 });
 
                 builder.ConfigurePipeline<ICreateOrderPipeline>(configure =>
                 {
-                    configure.Add<EntityOutputBlock<Order>>().After<CreateOrderBlock>();
                     configure.Add<MoveToWaitingForPaymentOrderBlock>().After<CreateOrderBlock>();
                 });
             });

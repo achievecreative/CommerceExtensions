@@ -16,16 +16,12 @@
    
   <ItemGroup>
     <Folder Include="Commands\" />
-    <Folder Include="Components\" />
     <Folder Include="Controllers\" />
     <Folder Include="Entities\" />
     <Folder Include="FrameworkExtensions\" />
-    <Folder Include="Minions\" />
     <Folder Include="Models\" />
-    <Folder Include="Pipelines\Arguments\" />
     <Folder Include="Pipelines\Blocks\DoActions\" />
     <Folder Include="Pipelines\Blocks\EntityViews\" />
-    <Folder Include="Policies\" />
     <Folder Include="Rules\Conditions\" />
     <Folder Include="Rules\Actions\" />
   </ItemGroup>

@@ -9,6 +9,10 @@ using Sitecore.Commerce.Core;
 using Sitecore.Framework.Configuration;
 using Sitecore.Framework.Pipelines.Definitions.Extensions;
 using System.Reflection;
+using Achievecreative.Commerce.Plugin.Payments.Adyen.Pipelines;
+using Achievecreative.Commerce.Plugin.Payments.Adyen.Pipelines.Arguments;
+using Achievecreative.Commerce.Plugin.Payments.Adyen.Pipelines.Blocks;
+using Sitecore.Framework.Pipelines.Definitions.FunctionExtensions;
 
 namespace Achievecreative.Commerce.Plugin.Payments.Adyen
 {
@@ -33,6 +37,19 @@ namespace Achievecreative.Commerce.Plugin.Payments.Adyen
             //)
 
             //);
+
+            services.Sitecore().Pipelines(config =>
+            {
+                config.AddPipeline<IGetShopperReferencePipeline, GetShopperReferencePipeline>(configure =>
+                {
+                    configure.Add<GenerateShopperReferenceBlock>();
+                });
+
+                config.AddPipeline<IWaitingForPaymentOrdersMinionPipeline, WaitingForPaymentOrdersMinionPipeline>(configure =>
+                {
+                    configure.Add<WaitingForPaymentBlock>().Add<IPersistEntityPipeline>();
+                });
+            });
         }
     }
 }
