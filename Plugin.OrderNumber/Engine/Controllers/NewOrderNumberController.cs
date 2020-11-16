@@ -9,7 +9,6 @@ using Sitecore.Commerce.Core;
 
 namespace Achievecreative.Commerce.Plugin.OrderNumber.Controllers
 {
-    [Route("api")]
     [EnableQuery]
     public class NewOrderNumberController : CommerceODataController
     {
@@ -19,7 +18,6 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber.Controllers
 
         [HttpGet]
         [EnableQuery]
-        [Route("NewOrderNumber")]
         public async Task<OrderNumberModel> Get()
         {
             var r = await this.Command<NewOrderNumberCommand>().Process(this.CurrentContext);

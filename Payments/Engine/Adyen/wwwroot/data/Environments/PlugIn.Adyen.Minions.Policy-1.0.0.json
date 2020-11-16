@@ -1,7 +1,8 @@
 {
-  "$type": "BKL.Commerce.Plugin.OrderNumber.Policies.OrderNumberPolicy, BKL.Commerce.Plugin.OrderNumber",
-  "StartNumber": 1,
-  "OrderNumberLength": 8,
-  "PaddingCharacter": "0",
-  "Prefix": "AC"
+  "$type": "Achievecreative.Commerce.Plugin.Payments.Adyen.Policies.AdyenPolicy, Achievecreative.Commerce.Plugin.Payments.Adyen",
+  "ReferencePrefix": "AC",
+  "MerchantAccount": "",
+  "Channel": "Web",
+  "ApiKey": "123456",
+  "Environment": "sandbox" 
 }

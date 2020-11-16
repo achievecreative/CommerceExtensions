@@ -54,9 +54,6 @@ namespace Achievecreative.Commerce.Plugin.OrderNumber
             //configuration.Parameter<string>("Id");
             //configuration.ReturnsFromEntitySet<CommerceCommand>("Commands");
 
-            //var orderNumberConfiguration = arg.Action("NewOrderNumber");
-            //orderNumberConfiguration.ReturnsFromEntitySet<CommerceCommand>("NewOrderNumber");
-
             arg.AddEntityType(typeof(OrderNumberModel));
             arg.EntitySet<OrderNumberModel>("NewOrderNumber");
 

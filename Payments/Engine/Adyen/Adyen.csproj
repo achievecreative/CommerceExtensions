@@ -24,6 +24,10 @@
     <Folder Include="Rules\Conditions\" />
     <Folder Include="Rules\Actions\" />
   </ItemGroup>
+   
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orders\Engine\Orders\Orders.csproj" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>NU1603,NU5048</NoWarn>
